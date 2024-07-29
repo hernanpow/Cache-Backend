@@ -16,6 +16,7 @@ class WeatherServiceImpl(
     private val errorLogger: ErrorLogger
 ) : WeatherService {
 
+
     override suspend fun getWeatherForLocation(location: String): WeatherData? {
         return repository.getWeatherData(location)
     }
@@ -35,6 +36,10 @@ class WeatherServiceImpl(
         }
     }
 
+    override fun getAllLocations(): List<String> {
+        return config.locations
+    }
+
     private suspend fun <T> retry(
         retries: Int,
         delayMillis: Long,
@@ -47,6 +52,6 @@ class WeatherServiceImpl(
                 delay(delayMillis)
             }
         }
-        return block() // Last attempt
+        return block()
     }
 }

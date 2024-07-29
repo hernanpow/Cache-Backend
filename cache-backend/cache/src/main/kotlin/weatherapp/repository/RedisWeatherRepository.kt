@@ -25,4 +25,6 @@ class RedisWeatherRepository(private val redisUrl: String) : WeatherRepository {
         val currentDate = sdf.format(Date())
         jedis.lpush("error_log", "$currentDate: $error")
     }
+
+
 }

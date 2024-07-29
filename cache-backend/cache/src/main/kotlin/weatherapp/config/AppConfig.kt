@@ -10,6 +10,7 @@ data class AppConfig(
 ) {
     companion object {
         fun load(): AppConfig {
+
             val config = ApplicationConfig("application.conf")
             return AppConfig(
                 port = config.property("ktor.deployment.port").getString().toInt(),

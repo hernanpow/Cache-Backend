@@ -6,8 +6,10 @@ import com.weatherapp.config.AppConfig
 import com.weatherapp.weatherapp.repository.RedisWeatherRepository
 import com.weatherapp.weatherapp.service.WeatherServiceImpl
 import com.weatherapp.weatherapp.utils.ErrorLogger
+import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.routing.*
 import kotlinx.coroutines.*
 
 fun main() {
@@ -16,6 +18,8 @@ fun main() {
     val apiClient = TomorrowIoClient(config.weatherApiKey)
     val errorLogger = ErrorLogger(repository)
     val weatherService = WeatherServiceImpl(repository, config, apiClient, errorLogger)
+
+
 
     val server = embeddedServer(Netty, port = config.port) {
         configureRouting(weatherService)
