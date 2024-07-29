@@ -11,6 +11,9 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass.set("com.weatherapp.Application.kt")
+}
 dependencies {
     testImplementation(kotlin("test"))
     implementation("io.ktor:ktor-server-core:2.3.3")
