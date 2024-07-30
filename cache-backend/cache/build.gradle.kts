@@ -4,7 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
 }
 
-group = "org.example"
+
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -14,6 +14,12 @@ repositories {
 application {
     mainClass.set("com.weatherapp.Application.kt")
 }
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.weatherapp.Application.kt"
+    }
+}
+
 dependencies {
     testImplementation(kotlin("test"))
     implementation("io.ktor:ktor-server-core:2.3.3")
@@ -32,6 +38,7 @@ dependencies {
     implementation("io.ktor:ktor-server-openapi:2.3.3")
     implementation("io.ktor:ktor-server-swagger:$2.3.3")
 }
+
 
 tasks.test {
     useJUnitPlatform()
