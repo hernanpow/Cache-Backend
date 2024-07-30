@@ -18,10 +18,16 @@ tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = "com.weatherapp.ApplicationKt"
     }
-
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(sourceSets.main.get().output)
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
 }
 
 dependencies {
+    implementation(kotlin("stdlib-jdk8"))
     testImplementation(kotlin("test"))
     implementation("io.ktor:ktor-server-core:2.3.3")
     implementation("io.ktor:ktor-server-netty:2.3.3")
