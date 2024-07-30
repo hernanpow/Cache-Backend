@@ -12,7 +12,7 @@ import io.ktor.server.netty.*
 import io.ktor.server.routing.*
 import kotlinx.coroutines.*
 
-fun main() {
+fun main(args : Array<String>) {
     val config = AppConfig.load()
     val repository = RedisWeatherRepository(config.redisUrl)
     val apiClient = TomorrowIoClient(config.weatherApiKey)

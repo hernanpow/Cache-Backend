@@ -12,11 +12,11 @@ repositories {
 }
 
 application {
-    mainClass.set("com.weatherapp.Application.kt")
+    mainClass.set("Application.kt")
 }
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "com.weatherapp.Application.kt"
+        attributes["Main-Class"] = "Application.kt"
     }
 }
 
