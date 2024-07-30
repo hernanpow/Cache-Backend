@@ -57,7 +57,8 @@ El servicio está desplegado y puede ser accedido en:
 
 [https://cache-backend-production.up.railway.app/](https://cache-backend-production.up.railway.app/)
 
-Para obtener datos meteorológicos, utiliza el endpoint `/weather/{searchTerm}`, donde `{searchTerm}` es el nombre de la ubicación que deseas consultar.
+Para obtener la temperatura, utiliza el endpoint `/weather/{searchTerm}`, donde `{searchTerm}` es el nombre de la ubicación que deseas consultar.
+(Decidi mostrar solo temperatura por una cuestion de tiempo, el json se recuperaba completo)
 
 
 Ejemplo:
